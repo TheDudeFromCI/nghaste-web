@@ -3,51 +3,200 @@
 
 <head>
     <title>NG-HASTE Documentation | How It Works</title>
-
+    <meta charset="UTF-8" />
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    <script
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.html">NG-HASTE</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
-            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarColor02" aria-controls="navbarColor02"
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="how-it-works.html">How it Works <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="how-it-works.html">
+                        How it Works
+                        <span class="sr-only">(current)</span>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="getting-started.html">Getting Started</a>
+                    <a class="nav-link" href="getting-started.html">
+                        Getting Started
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="roadmap.html">Roadmap</a>
+                    <a class="nav-link" href="roadmap.html">
+                        Roadmap
+                    </a>
                 </li>
             </ul>
         </div>
     </nav>
-
-    <div class="container">
-
+    <div class="jumbotron">
+        <div class="container text-center">
+            <h2 class="display-3">How It Works</h2>
+        </div>
     </div>
+    <div class="container text-justify">
+        <h2>Node Graphs</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="images/node-graph.svg" class="float-right p-2"
+                    width="360px" />
+                <p>
+                    NG-HASTE generates algorithms through the act of growing
+                    node graphs. A node graph is a collection of nodes and
+                    connections which describe how information should be
+                    passed through a algorithm. Each node can be thought of as a
+                    function while each connection can be thought of as data
+                    object being passed around.
+                </p>
+                <p>
+                    In the image to the right, we have an example of a simple
+                    node graph. Each box represents a function while each
+                    connection between the boxes represents data flowing from
+                    function to function. Each function takes in a set of input
+                    variables and exports a set of output variables. NG-HASTE
+                    doesn't care about what the implmentation of a function is,
+                    simply what goes in and what comes out. (Additional
+                    optimizations can be made by allowing axioms to know the
+                    implmentation, but this is not required. More detail
+                    explained later.)
+                </p>
+                <p>
+                    For the sake of simplicity, this example only shows
+                    variables being used once when passing between functions,
+                    however, variables can be used any number of times by adding
+                    more connections. When creating connections, an output
+                    variable coming from a function can be used any number of
+                    times. However, an incoming variable to a function may only
+                    have one value.
+                </p>
+                <p>
+                    While there are many different ways a node graph can be
+                    created or used, NGHASTE has a few specific rules for what
+                    determines whether or not a node graph is valid. An invalid
+                    node graph will never be proposed as a solution.
 
+                </p>
+                <ol>
+                    <li>
+                        The graph cannot contain any circular dependencies.
+                        <ul>
+                            <li class="subnote">
+                                No output of a node cannot directly or
+                                indirectly connect back into it's inputs.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        All inputs of a function must be satisfied for the graph
+                        to be complete.
+                        <ul>
+                            <li class="subnote">
+                                If a function requires two inputs, but only one
+                                is provided, the graph is considered
+                                uncompilable.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        There is only one output node.
+                        <ul>
+                            <li class="subnote">
+                                This node can still have any number of input
+                                parameters. The purpose of this node is to
+                                determine the shape of the tree and can be used
+                                to run the tree to determine its state.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        No node is considered part of the graph unless at least
+                        one output is used.
+                        <ul>
+                            <li class="subnote">
+                                This excludes the output node. For all other
+                                nodes, the node is simply ignored if it's not
+                                being used. If you need to preform a function on
+                                an object that returns no value, the function
+                                can simply return the object it acted upon.
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h5>Parsing a Node Graph</h5>
+                <p>
+                    Parsing a node graph is very simple and straight-forward.
+                    Information is always moving from left to right. The order
+                    in which functions are executed doesn't matter, as long as
+                    all parent nodes of a function are executed before the
+                    child. After all, you can't pass inputs to a function unless
+                    you know what those inputs are. Each connection is a value
+                    type variable, so we never have to worry about race
+                    conditions if we decide to parallelize the function.
+                </p>
+            </div>
+        </div>
+
+        <br />
+
+        <h2>The Search Tree</h2>
+
+        <p>
+            The main function of NG-HASTE is the search tree. By taking the full
+            search space of all possible algorithms that can be generated and
+            forming those into the shape of a search tree, we can search through
+            it much easier. It also allows us to prune out branches which won't
+            help us or prioritize branches that will help more.
+        </p>
+
+        <img src="images/search-tree-example.svg"
+            style="width: 100%; height: auto;" />
+
+        <br />
+        <br />
+        <h2>Logical Axioms</h2>
+
+        <p> To do. </p>
+
+        <br />
+        <h2>Heuristics</h2>
+
+        <p> To do. </p>
+
+        <br />
+        <h2>Solution Tests</h2>
+
+        <p> To do. </p>
+
+        <br />
+        <h2>Fitness Functions</h2>
+
+        <p> To do. </p>
+    </div>
 </body>
 
 </html>
