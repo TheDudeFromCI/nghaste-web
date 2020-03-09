@@ -165,8 +165,9 @@
                     all parent nodes of a function are executed before the
                     child. After all, you can't pass inputs to a function unless
                     you know what those inputs are. Each connection is a value
-                    conditions if we decide to parallelize the function, or
-                    sorting issues if we process things in a strange order.
+                    type object, so we don't have to worry about race conditions
+                    if we decide to parallelize the function, or sorting issues
+                    if we process things in a strange order.
                 </p>
                 <p>
                     The most common way to parse a node graph is to start at the
@@ -177,7 +178,7 @@
                     inputs. We can see this below with some Python Psuedocode.
                 </p>
 
-                <pre class="m-4"><code class="lang-python py-3">
+                <pre class="m-4"><code class="lang-python pt-3 pb-1">
                     # First, we create a temporary list of finished nodes.
                     # This shows us what nodes we've already calculated.
                     finishedNodes = []
@@ -229,7 +230,108 @@
                     print(plugValues[outputNode.outputs[0]])
                 </code></pre>
 
-                <p>.</p>
+                <p>
+                    For objects which use branching inputs, such as loops or if
+                    statements, you can skill processing parameters which
+                    wouldn't be called, otherwise. In an if statement, for
+                    example, you would calculate the conditional parameter
+                    input, and depending on whether it evaluates to true or
+                    false, calculate values for only one of the two branches.
+                    This will allow you to save a lot of overhead in much larger
+                    node graphs.
+                </p>
+
+                <h5>Dealing with Object Values</h5>
+
+                <p>
+                    As stated above, all objects are treated as value types.
+                    This is important as connections can be made to multiple
+                    other functions at once. Reference types would introduce
+                    sorting dependencies and would potentially lead to
+                    unexpected results in many cases. To combat this, by dealing
+                    with value types, each function soley interacts with a given
+                    set of input values and exports a new set of values. A
+                    function must always produce the same output if given the
+                    same inputs. In addition, a function cannot interact with
+                    objects outside of itself in any way. If modifying the world
+                    is required, it's best to pass in a world state as a data
+                    type into the graph as an input function, and accept a world
+                    state as an output function parameter. That world state
+                    itself can contain a list of actions which should be
+                    preformed on it, in order, to be executed after the graph
+                    has returned the final value. Let's take a look at a more
+                    visual example.
+                </p>
+
+                <img src="images/movement-ai.svg" width="100%" />
+
+                <p>
+                    In the example above, you can get a better visualization of
+                    how information is passing through a node graph and how
+                    decision are being made. Here, we have a simple program in
+                    which an artificial intelligence agent is deciding whether
+                    it should move forward or stand still. The agent will move
+                    forward if it has not reached the goal, and will stand still
+                    if it has reached the goal.
+                </p>
+                <p>
+                    This graph just deals with three different data types, as
+                    shown in the key. The world state describes what the state
+                    of the world would look like if that branch is taken. This
+                    can be seen at the if statement function where there are two
+                    existing copies of the world state. One where the agent has
+                    preformed no action and one where the agent has moved
+                    forward.
+                </p>
+                <p>
+                    In practice, the world state can by insanely large. Creating
+                    a complete copy of this for every function would chew up a
+                    lot of resources. It's far more likely the world state would
+                    be implemented in a manner closer to this:
+                </p>
+
+                <pre><code class="lang-python">
+                    # This is the world state object. We'll make a new instance of this
+                    # for each connection.
+                    class WorldState:
+                        def __init__(self, world, actions = []):
+                            # The world variable is the actual state of the world. We
+                            # won't edit it, so we can safely move this instance around
+                            # without having to create new ones each time.
+                            this.world = world
+
+                            # We'll initialize our list of actions to be empty.
+                            this.actions = actions
+                        
+                        def getAgentPosition(self):
+                            # When we grab the agent's position, we'll start by grabbiing
+                            # it's actual world position.
+                            pos = this.world.getAgentPosition()
+
+                            # Now pass that position through each action, in order, in
+                            # case some of the actions change the position.
+                            for action in this.actions:
+                                pos = action.getAgentPosition(pos)
+
+                            # This is where the position would-be if we preformed all
+                            # previous actions.
+                            return pos
+
+                        def addAction(self, action):
+                            # If we preform a new action, we make a copy of this instance,
+                            # add the action to that instance, and return that.
+                            newWorld = WorldState(world, actions.copy())
+                            newWorld.actions.append(action)
+                            return newWorld
+                </code></pre>
+
+                <p>
+                    This gives us a significantly more useful method of managing
+                    data types within a graph. In addition, we can now see how
+                    object oriented programming can be implemented into a node
+                    graph. Simply turn each method of a class into a function,
+                    taking the object itself as both an input and an output.
+                </p>
             </div>
         </div>
 
@@ -245,7 +347,7 @@
             help us or prioritize branches that will help more.
         </p>
 
-        <img src="images/search-tree-example.svg"
+        <img src=" images/search-tree-example.svg"
             style="width: 100%; height: auto;" />
 
         <br />
