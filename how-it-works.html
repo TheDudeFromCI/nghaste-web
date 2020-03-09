@@ -16,6 +16,13 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+    <script src="lib/prettypre.js"></script>
+
+    <link rel="stylesheet" href="lib/highlight/styles/default.css">
+    <script src="lib/highlight/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -53,11 +60,14 @@
             </ul>
         </div>
     </nav>
-    <div class="jumbotron">
+    <div class="jumbotron my-0">
         <div class="container text-center">
             <h2 class="display-3">How It Works</h2>
         </div>
+
+        <hr class="my-4" />
     </div>
+
     <div class="container text-justify">
         <h2>Node Graphs</h2>
         <div class="row">
@@ -138,10 +148,10 @@
                         <ul>
                             <li class="subnote">
                                 This excludes the output node. For all other
-                                nodes, the node is simply ignored if it's not
-                                being used. If you need to preform a function on
-                                an object that returns no value, the function
-                                can simply return the object it acted upon.
+                                nodes, the node is invalid if it's not being
+                                used. If you need to preform a function on an
+                                object that returns no value, the function can
+                                simply return the object it acted upon.
                             </li>
                         </ul>
                     </li>
@@ -155,9 +165,71 @@
                     all parent nodes of a function are executed before the
                     child. After all, you can't pass inputs to a function unless
                     you know what those inputs are. Each connection is a value
-                    type variable, so we never have to worry about race
-                    conditions if we decide to parallelize the function.
+                    conditions if we decide to parallelize the function, or
+                    sorting issues if we process things in a strange order.
                 </p>
+                <p>
+                    The most common way to parse a node graph is to start at the
+                    output node. For that node, check if all parent nodes have
+                    been executed. If not, recursively call all parent nodes and
+                    check if their parents have been run. Once all parents have
+                    been executed, the target node can be run using the provided
+                    inputs. We can see this below with some Python Psuedocode.
+                </p>
+
+                <pre class="m-4"><code class="lang-python py-3">
+                    # First, we create a temporary list of finished nodes.
+                    # This shows us what nodes we've already calculated.
+                    finishedNodes = []
+
+                    # Next, we create an empty dictionary which pairs output
+                    # plugs to what value they are holding after nodes are executed.
+                    plugValues = {}
+
+                    # The execute method runs a node function with a list of parameters
+                    # and stores the returned tuple back into the plugValues dictionary.
+                    def execute(node):
+
+                        # Create a list of the parameters we will pass to the function.
+                        parameters = []
+
+                        # For each input plug, retrieve the value of the output plug
+                        # which is connected to it.
+                        for plug in node.inputs:
+                            value = plugValues[plug.parent]
+                            parameters.append(value)
+
+                        # Run the node function.
+                        returned = node.function.run(parameters)
+
+                        # Lastly, store all new values back into the dictionary.
+                        for i, plug in enumerate(node.outputs):
+                            plugValues[plug] = returned[i]
+
+                    # This method recursively executes the target node and all its
+                    # parent nodes.
+                    def calculateValues(node):
+                        # If we've already calculated this node, do nothing.
+                        if node in finishedNodes:
+                            return
+
+                        # Calculate all parent nodes, first.
+                        for parent in node.parents:
+                            calculateValues(parent)
+                        
+                        # Execute this node, and add it to the finishedNodes list.
+                        execute(node)
+                        finishedNodes.append(node)
+
+                    # Now we simply calculate the values of the output node.
+                    outputNode = graph.outputNode
+                    calculateValues(outputNode)
+
+                    # We can freely read the outputs from the plugValues dictionary.
+                    print(plugValues[outputNode.outputs[0]])
+                </code></pre>
+
+                <p>.</p>
             </div>
         </div>
 
