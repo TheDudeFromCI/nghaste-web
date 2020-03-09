@@ -278,10 +278,10 @@
                     This graph just deals with three different data types, as
                     shown in the key. The world state describes what the state
                     of the world would look like if that branch is taken. This
-                    can be seen at the if statement function where there are two
-                    existing copies of the world state. One where the agent has
-                    preformed no action and one where the agent has moved
-                    forward.
+                    can be seen at the <strong>If Statement</strong>node where
+                    there are two existing copies of the world state. One where
+                    the agent has preformed no action and one where the agent
+                    has moved forward.
                 </p>
                 <p>
                     In practice, the world state can by insanely large. Creating
@@ -331,6 +331,90 @@
                     object oriented programming can be implemented into a node
                     graph. Simply turn each method of a class into a function,
                     taking the object itself as both an input and an output.
+                </p>
+
+                <h5>Loops</h5>
+
+                <p>
+                    To account for the wide range of algorithms which can be
+                    represented by a node graph, loops are <i>essential</i> to
+                    add. Luckily, they already fit quite nicely with what we
+                    already have. However, an obvious change must be made. As
+                    information passed from left to right, there's no way to
+                    pass information backwards to the begining of a loop.
+                    Without this ability, loops are quite difficult to use and
+                    leaves a lot of things which simply cannot be done
+                    reasonably.
+                </p>
+                <p>
+                    The most appropiate approach is to add a loop state as an
+                    input function. The loop function itself can then resolve
+                    the incoming nodes for each iteration of the loop, while
+                    only adjusting the loop state. The loop function can take
+                    the new state back as an input to be sent back to the input
+                    parameter. This method allows for loops to be implemented
+                    without breaking the established implementation pattern.
+                </p>
+
+                <img src="images/loops-example.svg" width="100%" />
+
+                <p>
+                    Here you can see what an example of a loop would loop like.
+                    The graph above is a simple algorithm which adds all
+                    integers between 1 and 10, inclusive. The path may not be
+                    directly obvious, so let's walk through it step by step.
+                </p>
+
+                <ol>
+                    <li>
+                        Working backwards, the <strong>Output</strong> function
+                        tries to resolve the <strong>Get Integer</strong> node,
+                        which requires a loop state returned from the
+                        <strong>For Each</strong> node. The loop cannot run
+                        until it knows the list to run on, so it resolves the
+                        <strong>Range</strong> node, which creates a list of
+                        numbers between 1 and 10.
+                    </li>
+                    <li>
+                        Now that we have the list of items to operate on, the
+                        loop initializes the <strong>Loop State</strong> node to
+                        contain an empty state. This is our "memory" of what's
+                        going on. In addition, the <strong>Loop State</strong>
+                        is also given the current item in the list. In this
+                        case, 1.
+                    </li>
+                    <li>
+                        Now we pull an integer from the state, located at
+                        location 0 and add it to the current list item. There is
+                        no item at location 0 in memory, so 0 is returned.
+                        Adding that to 1 gives us 1.
+                    </li>
+                    <li>
+                        That new value, 1, is pushed back into the loop state at
+                        location 0, creating a new loop state instance. Finally
+                        we pass this state back into the loop to finish the
+                        first loop element.
+                    </li>
+                    <li>
+                        We repeat steps 2-4 for the remaining 9 elements, but
+                        instead of creating an empty loop state in step 2, we
+                        pass in the loop state which we created in step 4 from
+                        the previous item.
+                    </li>
+                    <li>
+                        Now that we've finished the loop, the loop returns a
+                        loop state. We can pull our final sum from location 0
+                        in the loop state and send it to our
+                        <strong>Output</strong> node. Done!
+                    </li>
+                </ol>
+
+                <p>
+                    This approach is really nice as it allows us to nest loops
+                    any number of times, or run loops side by side. We simply
+                    need to keep resolving the loop state for each item in the
+                    list, then clearing those calculated values each iteration,
+                    only preserving the loop state.
                 </p>
             </div>
         </div>

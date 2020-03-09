@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="62cm" height="30cm" viewBox="198 78 1223 583" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="200" y="80" width="1220" height="580"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ffffff" x="200" y="80" width="1220" height="580"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="810" y="373.881">
+      <tspan x="810" y="373.881"></tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="100" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="100" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="270" y="145.881">
+      <tspan x="270" y="145.881">Loop</tspan>
+      <tspan x="270" y="161.881">State</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="520" y="480" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="480" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="570" y="533.881">
+      <tspan x="570" y="533.881">Range</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="380" y="420" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="380" y="420" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="430" y="473.881">
+      <tspan x="430" y="473.881">1</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="380" y="540" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="380" y="540" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="430" y="593.881">
+      <tspan x="430" y="593.881">10</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="481.006,470 500.503,470 500.503,505 510.264,505 "/>
+    <polygon style="fill: #00ff00" points="517.764,505 507.764,510 510.264,505 507.764,500 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="517.764,505 507.764,510 510.264,505 507.764,500 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="480,590 500,590 500,555 510.264,555 "/>
+    <polygon style="fill: #00ff00" points="517.764,555 507.764,560 510.264,555 507.764,550 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="517.764,555 507.764,560 510.264,555 507.764,550 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="960" y="380" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="960" y="380" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1010" y="425.881">
+      <tspan x="1010" y="425.881">For</tspan>
+      <tspan x="1010" y="441.881">Each</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #0000ff" points="620,530 790,530 790,455 950.264,455 "/>
+    <polygon style="fill: #0000ff" points="957.764,455 947.764,460 950.264,455 947.764,450 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #0000ff" points="957.764,455 947.764,460 950.264,455 947.764,450 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="560" y="100" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="560" y="100" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="610" y="153.881">
+      <tspan x="610" y="153.881">Add</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="400" y="190" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="400" y="190" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="450" y="235.881">
+      <tspan x="450" y="235.881">Get</tspan>
+      <tspan x="450" y="251.881">Integer</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="320,175 340,175 340,215 390.264,215 "/>
+    <polygon style="fill: #ff0000" points="397.764,215 387.764,220 390.264,215 387.764,210 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="397.764,215 387.764,220 390.264,215 387.764,210 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="220" y="320" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="220" y="320" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="270" y="373.881">
+      <tspan x="270" y="373.881">0</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="500,240 530,240 530,175 550.264,175 "/>
+    <polygon style="fill: #00ff00" points="557.764,175 547.764,180 550.264,175 547.764,170 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="557.764,175 547.764,180 550.264,175 547.764,170 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="720" y="260" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="260" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="770" y="305.881">
+      <tspan x="770" y="305.881">Set</tspan>
+      <tspan x="770" y="321.881">Integer</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="320,175 340,175 340,310 710.264,310 "/>
+    <polygon style="fill: #ff0000" points="717.764,310 707.764,315 710.264,310 707.764,305 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="717.764,310 707.764,315 710.264,310 707.764,305 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="821.006,310 890.503,310 890.503,405 950.264,405 "/>
+    <polygon style="fill: #ff0000" points="957.764,405 947.764,410 950.264,405 947.764,400 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="957.764,405 947.764,410 950.264,405 947.764,400 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1300" y="440" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1300" y="440" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1350" y="493.881">
+      <tspan x="1350" y="493.881">Output</tspan>
+    </text>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" x1="320" y1="125" x2="550.264" y2="125"/>
+    <polygon style="fill: #00ff00" points="557.764,125 547.764,130 550.264,125 547.764,120 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="557.764,125 547.764,130 550.264,125 547.764,120 "/>
+  </g>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="330" y="120">
+    <tspan x="330" y="120">Next Item In List</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="330" y="170">
+    <tspan x="330" y="170">Current State</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="368" y="268.119" width="52" height="30.8998"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="420" y="280">
+      <tspan x="420" y="280">Memory</tspan>
+      <tspan x="420" y="296">Index</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="321.006,370 360.503,370 360.503,265 390.264,265 "/>
+    <polygon style="fill: #00ff00" points="397.764,265 387.764,270 390.264,265 387.764,260 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="397.764,265 387.764,270 390.264,265 387.764,260 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="668" y="338.119" width="52" height="30.8998"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="720" y="350">
+      <tspan x="720" y="350">Memory</tspan>
+      <tspan x="720" y="366">Index</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="320,370 360,370 360,335 710.264,335 "/>
+    <polygon style="fill: #00ff00" points="717.764,335 707.764,340 710.264,335 707.764,330 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="717.764,335 707.764,340 710.264,335 707.764,330 "/>
+  </g>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="830" y="300">
+    <tspan x="830" y="300">New State</tspan>
+  </text>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="660,150 690,150 690,285 710.264,285 "/>
+    <polygon style="fill: #00ff00" points="717.764,285 707.764,290 710.264,285 707.764,280 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="717.764,285 707.764,290 710.264,285 707.764,280 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="624.4" y="248.119" width="91.6" height="30.8998"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:sans-serif;font-style:normal;font-weight:normal" x="716" y="260">
+      <tspan x="716" y="260">Integer to Add</tspan>
+      <tspan x="716" y="276">To State</tspan>
+    </text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="630" y="488.119" width="115.85" height="30.8998"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="630" y="500">
+      <tspan x="630" y="500">A list of integers</tspan>
+      <tspan x="630" y="516">between 1 and 10</tspan>
+    </text>
+  </g>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1260" y="400">
+    <tspan x="1260" y="400">Our Combined Sum</tspan>
+  </text>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #b3b3b3" x1="1260" y1="400" x2="1260" y2="465.528"/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #b3b3b3" points="1255,457.764 1260,467.764 1265,457.764 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1120" y="440" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1120" y="440" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1170" y="485.881">
+      <tspan x="1170" y="485.881">Get</tspan>
+      <tspan x="1170" y="501.881">Integer</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="1060,430 1090,430 1090,465 1110.26,465 "/>
+    <polygon style="fill: #ff0000" points="1117.76,465 1107.76,470 1110.26,465 1107.76,460 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #ff0000" points="1117.76,465 1107.76,470 1110.26,465 1107.76,460 "/>
+  </g>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" x1="1221" y1="490" x2="1289.26" y2="490"/>
+    <polygon style="fill: #00ff00" points="1296.76,490 1286.76,495 1289.26,490 1286.76,485 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="1296.76,490 1286.76,495 1289.26,490 1286.76,485 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="960" y="500" width="100" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="960" y="500" width="100" height="100"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="1010" y="553.881">
+      <tspan x="1010" y="553.881">0</tspan>
+    </text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="1060.99,550 1090.5,550 1090.5,515 1110.26,515 "/>
+    <polygon style="fill: #00ff00" points="1117.76,515 1107.76,520 1110.26,515 1107.76,510 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #00ff00" points="1117.76,515 1107.76,520 1110.26,515 1107.76,510 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="1140" y="160">
+    <tspan x="1140" y="160">KEY:</tspan>
+  </text>
+  <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="1140" y="180">
+    <tspan x="1140" y="180">Red: Loop State Object</tspan>
+    <tspan x="1140" y="196">Green: Integer Object</tspan>
+    <tspan x="1140" y="212">Blue: Integer List Object</tspan>
+  </text>
+</svg>
