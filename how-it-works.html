@@ -425,16 +425,136 @@
 
         <p>
             The main function of NG-HASTE is the search tree. By taking the full
-            search space of all possible algorithms that can be generated and
-            forming those into the shape of a search tree, we can search through
-            it much easier. It also allows us to prune out branches which won't
-            help us or prioritize branches that will help more.
+            search space of all possible compilable solutions that can be
+            generated and shaping that search space into a search tree, we can
+            prune off large chunks of the search space which we know won't have
+            a valid solution, massively shrinking the search space required to
+            find a usable solution. It also allows us prioritize searching
+            branches that are more likely to contain a better solution and
+            converge even faster.
+        </p>
+
+        <p>
+            It's important to note that the tree shape of the search space is
+            seperate from the tree shape of the node graphs within it. In the
+            search space, evert valid node graph you can design is a single node
+            somewhere within the search tree, regardless of the graph's size,
+            shape, or architecture. See the image below.
         </p>
 
         <img src=" images/search-tree-example.svg"
             style="width: 100%; height: auto;" />
 
         <br />
+        <br />
+        <p>
+            Here, you can see a search tree with four nodes. A parent node and
+            three child nodes. All four nodes are complelete seperate node
+            graphs. In the search space, every possible valid graph that could
+            be written exists somewhere on tree. These graphs to not have to be
+            finished. In fact, only leaf nodes of the tree are finished. In
+            practice, these trees can be pretty massive, containing billions or
+            trillions of graphs. Thankfully, pruning them and prioritizing by
+            heuristics can really help us narrow down the size into something
+            more reasonable.
+        </p>
+
+        <p>
+            So how do we generate this search tree? Well, here's some
+            psuedocode.
+        </p>
+
+        <pre><code class="lang-python">
+            # First, we'll get our environment. It contains a collections of functions
+            # we're allowed to use as well as all our tests and heuristics.
+            env = getEnvironment()
+
+            # Define a new list of node graphs and initialize it with the starting
+            # graph.
+            open = []
+            startingGraph = NodeGraph()
+            startingGraph.addNode(env.getOutputFunction())
+            open.append(startingGraph)
+
+            # Next we'll create an empty list of solutions.
+            solutions = []
+
+            # Repeat until we find at least one solution or exhast the entire tree.
+            while len(solutions) == 0 and len(open) > 0:
+
+                # Get graph from the open list with the highest heuristic.
+                graph = getGraphWithHighestHeuristic(open)
+
+                # Remove it from the list.
+                open.remove(open)
+
+                # Iterate over each child of this graph.
+                # More details on how to create children later on.
+                for child in graph.createChildren():
+
+                    # Test the child against every axiom to see if it's valid.
+                    valid = True
+                    for axiom in env.axioms:
+                        if not axiom.isValid(child):
+                            valid = False
+                            break
+
+                    # Discard the child if any axioms fail.
+                    if not valid:
+                        continue
+
+                    # If the child is a solution by having no open input plugs
+                    if child.isSolution():
+
+                        # Test the child against every unit test to see if it's valid.                        
+                        for unitTest in env.unitTests:
+                            if not unitTest.isValid(child):
+                                valid = False
+                                break
+                        
+                        # Discard the child if any unit tests fail.
+                        if not valid:
+                            continue
+
+                        # If all tests pass, we have found a solution.
+                        solutions.append(solution)
+
+                    # If the child is not a solution
+                    else:
+
+                        # Calculate the child's heuristic score by summing the scores
+                        # of all heuristics in the environment.
+                        child.heuristicScore = 0
+                        for heuristic in env.heuristics:
+                            child.heuristicScore += heuristic.getScore(child)
+
+                        # We can now add the child back to the open list.
+                        open.append(child)
+
+
+            # Handle our results. In case we exhast all open graphs and the solution list
+            # is still empty, a solution does not exist.
+            if len(solutions) == 0:
+                print("No solutions exist.")
+
+            # Otherwise, handle solution(s).
+            # (Maybe be multiple solutions if discovered in the same iteration.)
+            else:
+                print("Found", len(solutions), "solutions")
+
+        </code></pre>
+
+        <p>
+            As you can see, the algorithm itself isn't that heard. This little
+            bit here is the entire meat of NG-HASTE. Once you know the node
+            graph and the search tree, you can write the entire solver.
+            Everything beyond this is just optimizing the problem. As you can
+            see, the search space is massive. The vast majority of NG-HASTE
+            boils down to writing clever optimizations which can be done in the
+            form of axioms and heuristics to prune off as much of the search
+            space as possible.
+        </p>
+
         <br />
         <h2>Logical Axioms</h2>
 
